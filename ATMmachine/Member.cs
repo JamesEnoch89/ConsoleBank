@@ -26,5 +26,6 @@ namespace ATMmachine
         public Member(string activeName, string activePin)
         {
         }
+
     }
 }

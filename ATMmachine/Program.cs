@@ -86,7 +86,10 @@ namespace ATMmachine
                 Console.WriteLine("Please enter your PIN code");
                 var activePin = Console.ReadLine();
 
-                var activeMember = new Member(activeName, activePin);
+                Account checking = new Account();
+                Account savings = new Account();
+                
+                var activeMember = new Member(activeName, activePin, checking, savings);
                 Console.WriteLine($"Thanks {activeMember.Name}. You are now logged in");
                 //Console.WriteLine($" Your checkings account balance is: {activeMember.Checking.Balance}");
 
@@ -105,9 +108,7 @@ namespace ATMmachine
                         var checkingDeposit = Console.ReadLine();
                         var amount = Convert.ToDecimal(checkingDeposit);
                         activeMember.Checking.Deposit(amount);
-                        // run deposit function from account class somehow
-                        // give the user a log of recent transaction
-                        Console.WriteLine("You've deposited ??? your new balance is ???");
+                        Console.WriteLine($"You've deposited {amount} your new balance is {checking.Balance}");
                     }
                     else if (memberOptionsResponse == "withdraw")
                     {
