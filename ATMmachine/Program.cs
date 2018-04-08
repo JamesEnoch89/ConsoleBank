@@ -101,6 +101,10 @@ namespace ATMmachine
 
                     if (memberOptionsResponse == "deposit")
                     {
+                        Console.WriteLine("Please enter the amount you would like to deposit");
+                        var checkingDeposit = Console.ReadLine();
+                        var amount = Convert.ToDecimal(checkingDeposit);
+                        activeMember.Checking.Deposit(amount);
                         // run deposit function from account class somehow
                         // give the user a log of recent transaction
                         Console.WriteLine("You've deposited ??? your new balance is ???");
@@ -150,7 +154,9 @@ namespace ATMmachine
 
                     //validate user is logged in?
                     // when logged in display account balances
+                    // how to go from logging in to active user after log in and display all info (checking/savings + banking options)
 
+                    // give user option to close account...how to DEL key/value from dictionary with command that connects to a prompt response
 
 
 
@@ -161,3 +167,4 @@ namespace ATMmachine
             }
         }
     }
+}
