@@ -15,14 +15,14 @@ namespace ATMmachine
 
         public void Deposit(decimal amount)
         {
-            Balance = Balance + amount;
+            this.Balance = this.Balance + amount;
         }
 
         public bool Withdraw(decimal amount) //balance has to be >= 0 after withdraw
         {
             if (amount > Balance)
             {
-                return false; //insufficient funds
+                Console.WriteLine("You do not have enough funds to complete this transaction"); //insufficient funds
             }
             Balance = Balance - amount;
             return true; //enough funds

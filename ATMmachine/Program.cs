@@ -89,7 +89,8 @@ namespace ATMmachine
                 Account checking = new Account();
                 Account savings = new Account();
                 
-                var activeMember = new Member(activeName, activePin, checking, savings);
+                var activeMember = new Member(activeName, activePin, checking, savings); 
+
                 Console.WriteLine($"Thanks {activeMember.Name}. You are now logged in");
                 //Console.WriteLine($" Your checkings account balance is: {activeMember.Checking.Balance}");
 
@@ -112,9 +113,11 @@ namespace ATMmachine
                     }
                     else if (memberOptionsResponse == "withdraw")
                     {
-                        // run withdraw function from account class somehow
-                        // give the user a log of recent transaction
-                        Console.WriteLine("You've withdrawn ??? your new balance is ???");
+                        Console.WriteLine("Please enter the amount you wish to withdraw");
+                        var checkingWithdraw = Console.ReadLine();
+                        var amount = Convert.ToDecimal(checkingWithdraw);
+                        activeMember.Checking.Withdraw(amount);
+                        Console.WriteLine($"You've withdrawn {amount} your new balance is {checking.Balance}");
                     }
                     else if (memberOptionsResponse == "transfer")
                     {
@@ -141,8 +144,12 @@ namespace ATMmachine
                     // save members PIN
                     var memberPin = Console.ReadLine().ToLower();
 
+                    //Account checking = new Account();
+                    //Account savings = new Account();
+
                     var newMember = new Member(memberName, memberPin);
                     Console.WriteLine($"Thanks {newMember.Name}. You've created a new account");
+
 
                     using (var writer = new StreamWriter(USER_PATH))
                     {
